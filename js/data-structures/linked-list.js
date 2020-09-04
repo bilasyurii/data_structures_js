@@ -92,20 +92,7 @@ export default class LinkedList {
 
       return data;
     } else {
-      this._count = count - 1;
-
-      let node = this._head;
-      
-      for (let i = 2; i < count; ++i) {
-        node = node.next;
-      }
-
-      const data = this._tail.data;
-
-      node.next = null;
-      this._tail = node;
-
-      return data;
+      return this.remove(count - 1);
     }
   }
 
@@ -237,6 +224,40 @@ export default class LinkedList {
       node.next = newNode;
 
       ++this._count;
+    }
+  }
+
+  /**
+   * Remove item from collection by specifying it's index.
+   * Returns removed item.
+   * 
+   * @param {number} index
+   * 
+   * @returns {any}
+   */
+  remove(index) {
+    if (index == 0) {
+      return this.shift();
+    } else if (index < 0 || index >= this._count) {
+      throw new Error('Incorrect index.');
+    } else {
+      --this._count;
+
+      let node = this._head;
+
+      for (let i = 1; i < index; ++i) {
+        node = node.next;
+      }
+
+      const removedNode = node.next;
+
+      node.next = removedNode.next;
+
+      if (this._tail == removedNode) {
+        this._tail = node;
+      }
+
+      return removedNode.data;
     }
   }
 }
