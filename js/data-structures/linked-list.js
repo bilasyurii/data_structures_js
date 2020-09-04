@@ -260,6 +260,90 @@ export default class LinkedList {
       return removedNode.data;
     }
   }
+
+  /**
+   * Get index of item in collection.
+   * Returns -1, if item is not found.
+   * 
+   * @param {any} item
+   * 
+   * @returns {number}
+   */
+  indexOf(item) {
+    let node = this._head;
+    let i = 0;
+
+    while (node) {
+      if (node.data == item) {
+        return i;
+      }
+
+      ++i;
+      node = node.next;
+    }
+
+    return -1;
+  }
+
+  /**
+   * Find an first occurance of an item, defined by some expression.
+   * Returns null, if not found.
+   * 
+   * @param {(value: Any, index: number, list: LinkedList) => boolean} expression 
+   * 
+   * @returns {any}
+   */
+  find(expression) {
+    let node = this._head;
+    let i = 0;
+
+    while (node) {
+      if (expression(node.data, i++, this)) {
+        return node.data;
+      }
+
+      node = node.next;
+    }
+
+    return null;
+  }
+
+  /**
+   * Find all items, defined by some expression.
+   * Returns empty array, if not found.
+   * Puts items into destination, if specified.
+   * 
+   * @param {(value: Any, index: number, list: LinkedList) => boolean} expression 
+   * @param {any[]} destination
+   * 
+   * @returns {any[]}
+   */
+  findAll(expression, destination = undefined) {
+    if (destination == undefined) {
+      destination = [];
+    }
+
+    let node = this._head;
+    let i = 0;
+
+    while (node) {
+      if (expression(node.data, i++, this)) {
+        destination.push(node.data);
+      }
+
+      node = node.next;
+    }
+
+    return destination;
+  }
+
+  /**
+   * Remove all items from collection.
+   */
+  clear() {
+    this._head = this._tail = null;
+    this._count = 0;
+  }
 }
 
 /**

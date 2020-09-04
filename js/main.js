@@ -5,6 +5,7 @@ function linkedList() {
   list.push(2);
   list.push(5);
   list.push(4);
+  list.push(6);
   list.unshift(1);
   list.insert(1, 7);
 
@@ -18,6 +19,13 @@ function linkedList() {
   
   console.log(list.get(0));
   console.log(list.get(1));
+
+  console.log(list.indexOf(5));
+  console.log(list.indexOf(8));
+
+  console.log(list.find((item) => item < 10));
+  console.log(list.find((item) => item >= 10));
+  console.log(list.findAll((item) => item <= 6).join(' '));
 }
 
 const tests = [
