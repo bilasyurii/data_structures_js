@@ -344,6 +344,34 @@ export default class LinkedList {
     this._head = this._tail = null;
     this._count = 0;
   }
+
+  /**
+   * Clone this collection.
+   * 
+   * @returns {LinkedList}
+   */
+  clone() {
+    const list = new LinkedList();
+
+    this.forEach((item) => list.push(item));
+
+    return list;
+  }
+
+  /**
+   * Create linked list from an array.
+   * 
+   * @param {any[]} array
+   * 
+   * @returns {LinkedList}
+   */
+  static fromArray(array) {
+    const list = new LinkedList();
+
+    array.forEach((item) => list.push(item));
+
+    return list;
+  }
 }
 
 /**
