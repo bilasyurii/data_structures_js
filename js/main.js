@@ -1,7 +1,7 @@
 import LinkedList from './data-structures/linked-list.js';
-function linkedList() {
-  const list = new LinkedList();
+import DoubleLinkedList from './data-structures/double-linked-list.js';
 
+function listTest(list) {
   list.push(2);
   list.push(5);
   list.push(4);
@@ -28,8 +28,23 @@ function linkedList() {
   console.log(list.findAll((item) => item <= 6).join(' '));
 }
 
+function linkedList() {
+  const list = new LinkedList();
+
+  listTest(list);
+}
+
+function doubleLinkedList() {
+  const list = new DoubleLinkedList();
+
+  listTest(list);
+}
+
 const tests = [
   linkedList,
+  doubleLinkedList,
 ];
 
-tests.forEach((test) => test());
+// tests.forEach((test) => test());
+
+tests[1]();
