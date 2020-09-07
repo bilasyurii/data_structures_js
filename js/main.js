@@ -1,5 +1,6 @@
 import LinkedList from './data-structures/linked-list.js';
 import DoubleLinkedList from './data-structures/double-linked-list.js';
+import Stack from './data-structures/stack.js';
 
 function listTest(list) {
   list.push(2);
@@ -40,11 +41,35 @@ function doubleLinkedList() {
   listTest(list);
 }
 
+function stack() {
+  const stack = new Stack();
+
+  stack.push(2);
+  stack.push(5);
+  stack.push(4);
+  stack.push(6);
+  
+  console.log(stack.toArray().join(' '));
+
+  console.log(stack.pop());
+  console.log(stack.top);
+  console.log(stack.pop());
+  console.log(stack.count);
+
+  console.log(stack.toArray().join(' '));
+
+  
+  const stack2 = Stack.fromArray([1, 2, 3]);
+  
+  console.log(stack2.toArray().join(' '));
+}
+
 const tests = [
   linkedList,
   doubleLinkedList,
+  stack,
 ];
 
 // tests.forEach((test) => test());
 
-tests[1]();
+tests[2]();
