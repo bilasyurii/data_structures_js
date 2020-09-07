@@ -31,7 +31,7 @@ export default class LinkedList {
    * 
    * @returns {any}
    */
-  front() {
+  get front() {
     const head = this._head;
 
     if (head) {
@@ -46,7 +46,7 @@ export default class LinkedList {
    * 
    * @returns {any}
    */
-  back() {
+  get back() {
     const tail = this._tail;
 
     if (tail) {

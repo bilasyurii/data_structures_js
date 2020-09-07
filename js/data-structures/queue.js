@@ -39,7 +39,7 @@ export default class Queue {
    * @returns {any}
    */
   get front() {
-    return this._list.front();
+    return this._list.front;
   }
 
   /**

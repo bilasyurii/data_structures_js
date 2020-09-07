@@ -41,7 +41,7 @@ export default class Stack {
    * @returns {any}
    */
   get top() {
-    return this._list.front();
+    return this._list.front;
   }
 
   /**
