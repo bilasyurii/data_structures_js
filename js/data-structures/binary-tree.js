@@ -22,32 +22,7 @@ export default class BinaryTree {
   add(key, data) {
     ++this._count;
 
-    let node = this._root;
-    const newNode = new BinaryTreeNode(key, data);
-
-    if (node) {
-      while (true) {
-        if (key - node.key > 0) {
-          if (node.right) {
-            node = node.right;
-          } else {
-            node.right = newNode;
-  
-            return;
-          }
-        } else {
-          if (node.left) {
-            node = node.left;
-          } else {
-            node.left = newNode;
-  
-            return;
-          }
-        }
-      }
-    } else {
-      this._root = newNode;
-    }
+    this._addNode(new BinaryTreeNode(key, data));
   }
 
   /**
@@ -72,6 +47,110 @@ export default class BinaryTree {
     }
 
     return null;
+  }
+
+  /**
+   * Remove item from binary tree by specifying it's key.
+   * Returns removed item or null, if not present in the tree.
+   * 
+   * @param {number} key
+   * 
+   * @returns {any}
+   */
+  remove(key) {
+    let node = this._root;
+    let parent;
+    let isRight;
+
+    while (node) {
+      if (node.key === key) {
+        const rightChild = node.right;
+
+        if (parent) {
+          if (rightChild) {
+            if (isRight) {
+              parent.right = rightChild;
+            } else {
+              parent.left = rightChild;
+            }
+
+            const leftChild = node.left;
+
+            if (leftChild) {
+              this._addNode(leftChild);
+            }
+          } else {
+            let leftChild = node.left;
+
+            if (isRight) {
+              parent.right = leftChild;
+            } else {
+              parent.left = leftChild;
+            }
+          }
+        } else {
+          const leftChild = node.left;
+
+          if (rightChild) {
+            this._root = rightChild;
+
+            if (leftChild) {
+              this._addNode(leftChild);
+            }
+          } else {
+            this._root =  leftChild;
+          }
+        }
+
+        --this._count;
+
+        return node.data;
+      } else if (key > node.key) {
+        parent = node;
+        isRight = true;
+        node = node.right;
+      } else {
+        parent = node;
+        isRight = false;
+        node = node.left;
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Internal method for adding nodes.
+   * 
+   * @param {BinaryTreeNode} newNode
+   */
+  _addNode(newNode) {
+    const key = newNode.key;
+    let node = this._root;
+
+    if (node) {
+      while (true) {
+        if (key - node.key > 0) {
+          if (node.right) {
+            node = node.right;
+          } else {
+            node.right = newNode;
+  
+            return;
+          }
+        } else {
+          if (node.left) {
+            node = node.left;
+          } else {
+            node.left = newNode;
+  
+            return;
+          }
+        }
+      }
+    } else {
+      this._root = newNode;
+    }
   }
 }
 

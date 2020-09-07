@@ -120,10 +120,13 @@ function binaryTree() {
   tree.add(8, 'dolor');
   tree.add(5, 'sit');
 
+  console.log(tree.get(9));
   console.log(tree.get(8));
   console.log(tree.get(1));
-  console.log(tree.get(5));
-  console.log(tree.get(9));
+
+  console.log(tree.remove(3));
+
+  console.log(tree);
 }
 
 const tests = [
