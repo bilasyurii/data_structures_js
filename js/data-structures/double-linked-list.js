@@ -191,6 +191,22 @@ export default class DoubleLinkedList {
   }
 
   /**
+   * Do some action for each item of the collection, but traverse it in reverse order.
+   * 
+   * @param {(value: Any, index: number, list: DoubleLinkedList)} action 
+   */
+  forEachReversed(action) {
+    let node = this._tail;
+    let i = this._count;
+
+    while (node) {
+      action(node.data, --i, this);
+
+      node = node.prev;
+    }
+  }
+
+  /**
    * Add all items of this collection to array, if specified.
    * If not, new array will be created and returned.
    * 
@@ -373,7 +389,7 @@ export default class DoubleLinkedList {
   }
 
   /**
-   * Create linked list from an array.
+   * Create double linked list from an array.
    * 
    * @param {any[]} array
    * 
