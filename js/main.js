@@ -1,6 +1,7 @@
 import LinkedList from './data-structures/linked-list.js';
 import DoubleLinkedList from './data-structures/double-linked-list.js';
 import Stack from './data-structures/stack.js';
+import Queue from './data-structures/queue.js';
 
 function listTest(list) {
   list.push(2);
@@ -64,12 +65,35 @@ function stack() {
   console.log(stack2.toArray().join(' '));
 }
 
+function queue() {
+  const queue = new Queue();
+
+  queue.enqueue(2);
+  queue.enqueue(5);
+  queue.enqueue(4);
+  queue.enqueue(6);
+  
+  console.log(queue.toArray().join(' '));
+
+  console.log(queue.dequeue());
+  console.log(queue.front);
+  console.log(queue.dequeue());
+  console.log(queue.count);
+
+  console.log(queue.toArray().join(' '));
+
+  const queue2 = Queue.fromArray([1, 2, 3]);
+  
+  console.log(queue2.toArray().join(' '));
+}
+
 const tests = [
   linkedList,
   doubleLinkedList,
   stack,
+  queue,
 ];
 
 // tests.forEach((test) => test());
 
-tests[2]();
+tests[3]();
