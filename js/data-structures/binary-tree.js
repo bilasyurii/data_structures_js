@@ -1,11 +1,16 @@
 export default class BinaryTree {
-  /**
-   * @param {(a: any, b: any) => number} comparator 
-   */
-  constructor(comparator = BinaryTree._defaultComparator) {
-    this.comparator = comparator;
+  constructor() {
     this._root = null;
     this._count = 0;
+  }
+
+  /**
+   * Amount of elements in a collection.
+   * 
+   * @returns {number}
+   */
+  get count() {
+    return this._count;
   }
 
   /**
@@ -13,16 +18,15 @@ export default class BinaryTree {
    * 
    * @param {any} data
    */
-  add(data) {
+  add(key, data) {
     ++this._count;
 
-    const comparator = this.comparator;
     let node = this._root;
-    const newNode = new BinaryTreeNode(data);
+    const newNode = new BinaryTreeNode(key, data);
 
     if (node) {
       while (true) {
-        if (comparator(data, node.data) > 0) {
+        if (key - node.key > 0) {
           if (node.right) {
             node = node.right;
           } else {
@@ -44,10 +48,6 @@ export default class BinaryTree {
       this._root = newNode;
     }
   }
-
-  static _defaultComparator(a, b) {
-    return a - b;
-  }
 }
 
 /**
@@ -60,9 +60,11 @@ class BinaryTreeNode {
   /**
    * @constructor
    * 
+   * @param {number} key
    * @param {any} data Any type of data to store in the collection.
    */
-  constructor(data) {
+  constructor(key, data) {
+    this.key = key;
     this.data = data;
 
     /**
