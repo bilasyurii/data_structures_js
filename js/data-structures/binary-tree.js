@@ -16,6 +16,7 @@ export default class BinaryTree {
   /**
    * Add item to binary tree.
    * 
+   * @param {number} key
    * @param {any} data
    */
   add(key, data) {
@@ -47,6 +48,30 @@ export default class BinaryTree {
     } else {
       this._root = newNode;
     }
+  }
+
+  /**
+   * Get element of the binary tree using a key.
+   * Returns null, if element isn't present in the tree.
+   * 
+   * @param {number} key
+   * 
+   * @returns {any}
+   */
+  get(key) {
+    let node = this._root;
+
+    while (node) {
+      if (node.key === key) {
+        return node.data;
+      } else if (key > node.key) {
+        node = node.right;
+      } else {
+        node = node.left;
+      }
+    }
+
+    return null;
   }
 }
 

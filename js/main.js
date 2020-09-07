@@ -115,13 +115,15 @@ function dequeue() {
 function binaryTree() {
   const tree = new BinaryTree();
 
-  tree.add(3);
-  tree.add(1);
-  tree.add(8);
-  tree.add(5);
-  tree.add(10);
+  tree.add(3, 'lorem');
+  tree.add(1, 'ipsum');
+  tree.add(8, 'dolor');
+  tree.add(5, 'sit');
 
-  console.log(tree);
+  console.log(tree.get(8));
+  console.log(tree.get(1));
+  console.log(tree.get(5));
+  console.log(tree.get(9));
 }
 
 const tests = [
