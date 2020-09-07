@@ -7,6 +7,7 @@ List of the implemented data structures:
 - Double-linked list
 - Stack
 - Queue
+- Deque
 
 List of the data structures to be implemented:
 - Binary Tree
