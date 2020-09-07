@@ -3,6 +3,7 @@ import DoubleLinkedList from './data-structures/double-linked-list.js';
 import Stack from './data-structures/stack.js';
 import Queue from './data-structures/queue.js';
 import Deque from './data-structures/deque.js';
+import BinaryTree from './data-structures/binary-tree.js';
 
 function listTest(list) {
   list.push(2);
@@ -111,14 +112,27 @@ function dequeue() {
   console.log(deque2.toArray().join(' '));
 }
 
+function binaryTree() {
+  const tree = new BinaryTree();
+
+  tree.add(3);
+  tree.add(1);
+  tree.add(8);
+  tree.add(5);
+  tree.add(10);
+
+  console.log(tree);
+}
+
 const tests = [
   linkedList,
   doubleLinkedList,
   stack,
   queue,
   dequeue,
+  binaryTree,
 ];
 
 // tests.forEach((test) => test());
 
-tests[4]();
+tests[5]();
