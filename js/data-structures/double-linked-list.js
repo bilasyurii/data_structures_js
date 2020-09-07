@@ -94,6 +94,8 @@ export default class DoubleLinkedList {
 
       return data;
     } else {
+      --this._count;
+
       const oldTail = this._tail;
       const newTail = this._tail = oldTail.prev;
 

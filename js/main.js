@@ -2,6 +2,7 @@ import LinkedList from './data-structures/linked-list.js';
 import DoubleLinkedList from './data-structures/double-linked-list.js';
 import Stack from './data-structures/stack.js';
 import Queue from './data-structures/queue.js';
+import Deque from './data-structures/deque.js';
 
 function listTest(list) {
   list.push(2);
@@ -87,13 +88,37 @@ function queue() {
   console.log(queue2.toArray().join(' '));
 }
 
+function dequeue() {
+  const deque = new Deque();
+
+  deque.push(2);
+  deque.push(5);
+  deque.pushFront(4);
+  deque.pushFront(6);
+  
+  console.log(deque.toArray().join(' '));
+  
+  console.log(deque.back);
+  console.log(deque.pop());
+  console.log(deque.front);
+  console.log(deque.popFront());
+  console.log(deque.count);
+
+  console.log(deque.toArray().join(' '));
+
+  const deque2 = Queue.fromArray([1, 2, 3]);
+  
+  console.log(deque2.toArray().join(' '));
+}
+
 const tests = [
   linkedList,
   doubleLinkedList,
   stack,
   queue,
+  dequeue,
 ];
 
 // tests.forEach((test) => test());
 
-tests[3]();
+tests[4]();
