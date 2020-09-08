@@ -10,9 +10,9 @@ List of the implemented data structures:
 - Deque
 - Binary Tree
 - Min-Heap
+- Max-Heap
 
 List of the data structures to be implemented:
-- Max-Heap
 - Dictionary (Hashmap, Hashtable)
 - Graph
 - Oriented graph

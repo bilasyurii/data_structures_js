@@ -5,6 +5,7 @@ import Queue from './data-structures/queue.js';
 import Deque from './data-structures/deque.js';
 import BinaryTree from './data-structures/binary-tree.js';
 import MinHeap from './data-structures/min-heap.js';
+import MaxHeap from './data-structures/max-heap.js';
 
 function listTest(list) {
   list.push(2);
@@ -159,6 +160,26 @@ function minHeap() {
   console.log(heap.count);
 }
 
+function maxHeap() {
+  const heap = MaxHeap.fromArray([3, 6, 8, 1]);
+
+  console.log(heap.max);
+  console.log(heap.pop());
+
+  heap.add(5);
+  heap.add(9);
+
+  console.log(heap.clone().toArray());
+
+  console.log(heap.max);
+
+  heap.forEach((item) => console.log(item));
+
+  heap.clear();
+
+  console.log(heap.count);
+}
+
 const tests = [
   linkedList,
   doubleLinkedList,
@@ -167,8 +188,9 @@ const tests = [
   dequeue,
   binaryTree,
   minHeap,
+  maxHeap,
 ];
 
 // tests.forEach((test) => test());
 
-tests[6]();
+tests[7]();
