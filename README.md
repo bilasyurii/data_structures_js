@@ -8,9 +8,9 @@ List of the implemented data structures:
 - Stack
 - Queue
 - Deque
+- Binary Tree
 
 List of the data structures to be implemented:
-- Binary Tree
 - Min-Heap
 - Max-Heap
 - Dictionary (Hashmap, Hashtable)
