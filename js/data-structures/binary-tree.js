@@ -152,6 +152,86 @@ export default class BinaryTree {
       this._root = newNode;
     }
   }
+
+  /**
+   * Get items, that have a key greater or equal than the specified one.
+   * Second argument is optional and if it is specified, found items will
+   * be added to the end of it.
+   * 
+   * @param {number} key
+   * @param {any[]} destination
+   * 
+   * @returns {any[]}
+   */
+  greaterEqual(key, destination = undefined) {
+    if (destination == undefined) {
+      destination = [];
+    }
+
+    this._greaterEqual(this._root, key, destination);
+
+    return destination;
+  }
+
+  /**
+   * Get items, that have a key less or equal than the specified one.
+   * Second argument is optional and if it is specified, found items will
+   * be added to the end of it.
+   * 
+   * @param {number} key
+   * @param {any[]} destination
+   * 
+   * @returns {any[]}
+   */
+  lessEqual(key, destination = undefined) {
+    if (destination == undefined) {
+      destination = [];
+    }
+
+    this._lessEqual(this._root, key, destination);
+
+    return destination;
+  }
+
+  /**
+   * Internal method for getting items with
+   * keys greater or equal than the specified one.
+   * 
+   * @param {BinaryTreeNode} node
+   * @param {number} key
+   * @param {any[]} destination
+   */
+  _greaterEqual(node, key, destination) {
+    if (node) {
+      if (node.key >= key) {
+        destination.push(node.data);
+
+        this._greaterEqual(node.left, key, destination);
+      }
+
+      this._greaterEqual(node.right, key, destination);
+    }
+  }
+
+  /**
+   * Internal method for getting items with
+   * keys less or equal than the specified one.
+   * 
+   * @param {BinaryTreeNode} node
+   * @param {number} key
+   * @param {any[]} destination
+   */
+  _lessEqual(node, key, destination) {
+    if (node) {
+      if (node.key <= key) {
+        destination.push(node.data);
+
+        this._lessEqual(node.right, key, destination);
+      }
+
+      this._lessEqual(node.left, key, destination);
+    }
+  }
 }
 
 /**

@@ -126,7 +126,8 @@ function binaryTree() {
 
   console.log(tree.remove(3));
 
-  console.log(tree);
+  console.log(tree.greaterEqual(5));
+  console.log(tree.lessEqual(5));
 }
 
 const tests = [
