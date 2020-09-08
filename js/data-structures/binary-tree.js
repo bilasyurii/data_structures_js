@@ -120,37 +120,52 @@ export default class BinaryTree {
   }
 
   /**
-   * Internal method for adding nodes.
-   * 
-   * @param {BinaryTreeNode} newNode
+   * Remove all items from tree.
    */
-  _addNode(newNode) {
-    const key = newNode.key;
-    let node = this._root;
+  clear() {
+    this._count = 0;
+    this._root = null;
+  }
 
-    if (node) {
-      while (true) {
-        if (key - node.key > 0) {
-          if (node.right) {
-            node = node.right;
-          } else {
-            node.right = newNode;
-  
-            return;
-          }
-        } else {
-          if (node.left) {
-            node = node.left;
-          } else {
-            node.left = newNode;
-  
-            return;
-          }
-        }
-      }
-    } else {
-      this._root = newNode;
+  /**
+   * Clone this tree.
+   * 
+   * @returns {BinaryTree}
+   */
+  clone() {
+    const tree = new BinaryTree();
+
+    this.forEach((data, key) => tree.add(key, data));
+
+    return tree;
+  }
+
+  /**
+   * Do some action for each item of the collection.
+   * Traverses tree using preorder depth-first algorithm.
+   * 
+   * @param {(data: Any, key: number, tree: BinaryTree)} action 
+   */
+  forEach(action) {
+    this._traverse(this._root, action);
+  }
+
+  /**
+   * Add all items of this tree to array, if specified.
+   * If not, new array will be created and returned.
+   * 
+   * @param {any[]} array
+   * 
+   * @returns {any[]}
+   */
+  toArray(array = undefined) {
+    if (array == undefined) {
+      array = [];
     }
+
+    this.forEach((item) => array.push(item));
+
+    return array;
   }
 
   /**
@@ -230,6 +245,56 @@ export default class BinaryTree {
       }
 
       this._lessEqual(node.left, key, destination);
+    }
+  }
+
+  /**
+   * Internal method for adding nodes.
+   * 
+   * @param {BinaryTreeNode} newNode
+   */
+  _addNode(newNode) {
+    const key = newNode.key;
+    let node = this._root;
+
+    if (node) {
+      while (true) {
+        if (key - node.key > 0) {
+          if (node.right) {
+            node = node.right;
+          } else {
+            node.right = newNode;
+  
+            return;
+          }
+        } else {
+          if (node.left) {
+            node = node.left;
+          } else {
+            node.left = newNode;
+  
+            return;
+          }
+        }
+      }
+    } else {
+      this._root = newNode;
+    }
+  }
+
+  /**
+   * Internal method for traversing node and it's children
+   * using preorder depth-first algorithm.
+   * 
+   * @param {BinaryTreeNode} node
+   * @param {(data: Any, key: number, tree: BinaryTree)} action
+   */
+  _traverse(node, action) {
+    if (node) {
+      action(node.data, node.key, this);
+
+      this._traverse(node.left, action);
+      this._traverse(node.right, action);
     }
   }
 }

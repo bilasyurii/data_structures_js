@@ -128,6 +128,12 @@ function binaryTree() {
 
   console.log(tree.greaterEqual(5));
   console.log(tree.lessEqual(5));
+
+  console.log(tree.toArray());
+
+  const tree2 = tree.clone();
+
+  tree2.forEach((data) => console.log(data));
 }
 
 const tests = [
