@@ -120,6 +120,8 @@ function binaryTree() {
   tree.add(8, 'dolor');
   tree.add(5, 'sit');
 
+  tree.forEachBreadthFirst((data) => console.log(data));
+
   console.log(tree.get(9));
   console.log(tree.get(8));
   console.log(tree.get(1));

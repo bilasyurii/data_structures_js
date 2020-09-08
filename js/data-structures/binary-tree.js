@@ -150,6 +150,22 @@ export default class BinaryTree {
     this._traverse(this._root, action);
   }
 
+  forEachBreadthFirst(action) {
+    const queue = [this._root];
+    let node;
+
+    while (queue.length) {
+      node = queue.shift();
+
+      if (node) {
+        action(node.data, node.key, this);
+
+        queue.push(node.left);
+        queue.push(node.right);
+      }
+    }
+  }
+
   /**
    * Add all items of this tree to array, if specified.
    * If not, new array will be created and returned.
